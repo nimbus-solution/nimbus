@@ -52,7 +52,7 @@ governor limit tracking. Full feature breakdown:
 ## Quickstart
 
 The fastest way to confirm your install works is the BerlinBrew demo —
-a small fictional craft-brewery SFDX project with 96 passing tests:
+a small fictional craft-brewery SFDX project with a thorough Apex test suite:
 
 ```sh
 git clone https://github.com/nimbus-solution/berlinbrew-demo
@@ -60,7 +60,7 @@ cd berlinbrew-demo
 nimbus test
 ```
 
-Expected: green "96 passed" in under a second.
+Expected: an all-green run in under a second.
 
 To use Nimbus on your own SFDX project:
 
