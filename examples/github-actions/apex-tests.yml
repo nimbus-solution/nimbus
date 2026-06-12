@@ -1,0 +1,43 @@
+# Run Apex tests in GitHub Actions with Nimbus — no Salesforce org needed.
+# Docs: https://testnimbus.dev/ci
+name: Apex Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  apex-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nimbus
+        run: curl -fsSL https://install.testnimbus.dev | sh
+        env:
+          # Avoids the anonymous GitHub API rate limit on shared runners.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run tests
+        run: |
+          nimbus test \
+            --coverage --coverage-report coverage.xml \
+            --results-xml results.xml
+        env:
+          # --results-xml (JUnit output) is a Team feature.
+          # Free tier: drop the flag and the license key.
+          NIMBUS_LICENSE_KEY: ${{ secrets.NIMBUS_LICENSE_KEY }}
+          NIMBUS_PROFILE: ci
+
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: results.xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
