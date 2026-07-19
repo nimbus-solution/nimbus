@@ -60,6 +60,18 @@ scoop bucket add nimbus https://github.com/nimbus-solution/scoop-nimbus
 scoop install nimbus
 ```
 
+**Salesforce CLI plugin**
+
+```bash
+sf plugins install @nimbus-solution/nimbus-sf-plugin
+sf nimbus login
+sf nimbus test "*"
+```
+
+The plugin source lives in [`sf-plugin/`](sf-plugin/). It installs the native
+Nimbus runtime automatically, verifies the release checksum, and shares the
+same Nimbus Pro login as the standalone CLI.
+
 ## Quickstart
 
 From the root of your SFDX project:

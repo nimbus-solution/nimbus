@@ -1,0 +1,74 @@
+{
+  "name": "@nimbus-solution/nimbus-sf-plugin",
+  "version": "1.0.0",
+  "description": "Salesforce CLI plugin for running Nimbus local Apex development commands.",
+  "author": "Nimbus Solution",
+  "homepage": "https://testnimbus.dev/docs#salesforce-cli-plugin",
+  "bugs": {
+    "url": "https://github.com/nimbus-solution/nimbus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nimbus-solution/nimbus.git",
+    "directory": "sf-plugin"
+  },
+  "type": "module",
+  "exports": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib",
+    "oclif.manifest.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "apex",
+    "force",
+    "nimbus",
+    "salesforce",
+    "salesforcedx",
+    "sf",
+    "sf-plugin",
+    "sfdx",
+    "sfdx-plugin"
+  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "sf",
+    "topicSeparator": " ",
+    "topics": {
+      "nimbus": {
+        "description": "Run Apex and Salesforce development workflows locally with Nimbus."
+      }
+    },
+    "flexibleTaxonomy": true
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "clean": "rimraf lib oclif.manifest.json tsconfig.tsbuildinfo",
+    "manifest": "oclif manifest",
+    "prepack": "npm run clean && npm run build && npm run manifest",
+    "test": "npm run build && node --test test/nimbus-binary.test.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@oclif/core": "^4.11.14",
+    "@salesforce/core": "^8.32.4",
+    "@salesforce/sf-plugins-core": "^12.2.26",
+    "adm-zip": "^0.6.0",
+    "tar": "^7.5.20"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
+    "@types/node": "^22.19.11",
+    "oclif": "^4.22.9",
+    "rimraf": "^6.1.3",
+    "typescript": "^5.9.3"
+  }
+}

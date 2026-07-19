@@ -1,0 +1,60 @@
+name: Salesforce CLI Plugin
+
+on:
+  pull_request:
+    paths:
+      - "sf-plugin/**"
+      - ".github/workflows/sf-plugin.yml"
+  push:
+    branches: [master, main]
+    paths:
+      - "sf-plugin/**"
+      - ".github/workflows/sf-plugin.yml"
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the package version in sf-plugin/package.json to npm
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: sf-plugin/package-lock.json
+      - run: npm ci
+        working-directory: sf-plugin
+      - run: npm test
+        working-directory: sf-plugin
+      - run: npm run manifest
+        working-directory: sf-plugin
+      - run: npm pack --dry-run
+        working-directory: sf-plugin
+
+  publish:
+    if: github.event_name == 'workflow_dispatch' && inputs.publish
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - run: npm ci
+        working-directory: sf-plugin
+      - run: npm publish --access public
+        working-directory: sf-plugin

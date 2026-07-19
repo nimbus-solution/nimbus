@@ -1,0 +1,4 @@
+sf-plugin/node_modules/
+sf-plugin/lib/
+sf-plugin/tsconfig.tsbuildinfo
+sf-plugin/*.tgz

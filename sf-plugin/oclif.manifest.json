@@ -1,0 +1,664 @@
+{
+  "commands": {
+    "nimbus:app": {
+      "aliases": [],
+      "args": {},
+      "description": "Runs Salesforce Multi-Framework UI bundles against the local Nimbus runtime.",
+      "examples": [
+        "sf nimbus app",
+        "sf nimbus app reactRecipes",
+        "sf nimbus app --all"
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:app",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Run a Salesforce Multi-Framework app locally.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "app.js"
+      ],
+      "aliasPermutations": [],
+      "permutations": [
+        "nimbus:app",
+        "app:nimbus"
+      ]
+    },
+    "nimbus:dev": {
+      "aliases": [],
+      "args": {},
+      "examples": [
+        "sf nimbus dev"
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:dev",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Open the Nimbus local development UI.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "dev.js"
+      ],
+      "aliasPermutations": [],
+      "permutations": [
+        "nimbus:dev",
+        "dev:nimbus"
+      ]
+    },
+    "nimbus:doctor": {
+      "aliases": [],
+      "args": {},
+      "examples": [
+        "sf nimbus doctor",
+        "sf nimbus doctor --json"
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:doctor",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Diagnose Nimbus project setup.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "doctor.js"
+      ],
+      "aliasPermutations": [],
+      "permutations": [
+        "nimbus:doctor",
+        "doctor:nimbus"
+      ]
+    },
+    "nimbus:exec": {
+      "aliases": [
+        "nimbus:apex:run"
+      ],
+      "args": {},
+      "description": "Passes files, inline code, and HTTP mock flags through to `nimbus exec`.",
+      "examples": [
+        "sf nimbus exec script.apex",
+        "sf nimbus exec --code \"System.debug(1 + 1);\""
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:exec",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Execute anonymous Apex locally with Nimbus.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "exec.js"
+      ],
+      "aliasPermutations": [
+        "nimbus:apex:run",
+        "apex:nimbus:run",
+        "apex:run:nimbus",
+        "nimbus:run:apex",
+        "run:nimbus:apex",
+        "run:apex:nimbus"
+      ],
+      "permutations": [
+        "nimbus:exec",
+        "exec:nimbus"
+      ]
+    },
+    "nimbus:install": {
+      "aliases": [],
+      "args": {},
+      "examples": [
+        "sf nimbus install",
+        "sf nimbus install --version 1.6.1",
+        "sf nimbus install --force"
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        },
+        "force": {
+          "name": "force",
+          "summary": "Download the runtime even when a managed Nimbus binary already exists.",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "version": {
+          "name": "version",
+          "summary": "Nimbus version to install, or latest.",
+          "default": "latest",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:install",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": true,
+      "summary": "Install or update the Nimbus runtime managed by the Salesforce CLI plugin.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "install.js"
+      ],
+      "aliasPermutations": [],
+      "permutations": [
+        "nimbus:install",
+        "install:nimbus"
+      ]
+    },
+    "nimbus:login": {
+      "aliases": [],
+      "args": {},
+      "examples": [
+        "sf nimbus login"
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:login",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Sign in to Nimbus and activate a Pro license on this machine.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "login.js"
+      ],
+      "aliasPermutations": [],
+      "permutations": [
+        "nimbus:login",
+        "login:nimbus"
+      ]
+    },
+    "nimbus:logout": {
+      "aliases": [],
+      "args": {},
+      "examples": [
+        "sf nimbus logout"
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:logout",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Sign out of Nimbus and free this machine license activation.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "logout.js"
+      ],
+      "aliasPermutations": [],
+      "permutations": [
+        "nimbus:logout",
+        "logout:nimbus"
+      ]
+    },
+    "nimbus:mutate": {
+      "aliases": [],
+      "args": {},
+      "description": "Passes all arguments through to `nimbus mutate`.",
+      "examples": [
+        "sf nimbus mutate AccountService --min-score 80",
+        "sf nimbus mutate --class \"*Service\" --survivors-only"
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:mutate",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Measure Apex test quality with mutation testing.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "mutate.js"
+      ],
+      "aliasPermutations": [],
+      "permutations": [
+        "nimbus:mutate",
+        "mutate:nimbus"
+      ]
+    },
+    "nimbus:serve": {
+      "aliases": [],
+      "args": {},
+      "examples": [
+        "sf nimbus serve",
+        "sf nimbus serve --addr 127.0.0.1:8080 --grpc-addr 127.0.0.1:7443"
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:serve",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Start the local Salesforce-compatible REST and Pub/Sub server.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "serve.js"
+      ],
+      "aliasPermutations": [],
+      "permutations": [
+        "nimbus:serve",
+        "serve:nimbus"
+      ]
+    },
+    "nimbus:test": {
+      "aliases": [
+        "nimbus:apex:run:test"
+      ],
+      "args": {},
+      "description": "Passes all arguments through to `nimbus test`. Installs the Nimbus runtime automatically when needed.",
+      "examples": [
+        "sf nimbus test",
+        "sf nimbus test AccountServiceTest",
+        "sf nimbus test \"AccountServiceTest.testInsert\" --coverage",
+        "sf nimbus apex run test \"*\" --parallel 8"
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:test",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Run Apex tests locally with Nimbus.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "test.js"
+      ],
+      "aliasPermutations": [
+        "nimbus:apex:run:test",
+        "apex:nimbus:run:test",
+        "apex:run:nimbus:test",
+        "apex:run:test:nimbus",
+        "nimbus:run:apex:test",
+        "run:nimbus:apex:test",
+        "run:apex:nimbus:test",
+        "run:apex:test:nimbus",
+        "nimbus:run:test:apex",
+        "run:nimbus:test:apex",
+        "run:test:nimbus:apex",
+        "run:test:apex:nimbus",
+        "nimbus:apex:test:run",
+        "apex:nimbus:test:run",
+        "apex:test:nimbus:run",
+        "apex:test:run:nimbus",
+        "nimbus:test:apex:run",
+        "test:nimbus:apex:run",
+        "test:apex:nimbus:run",
+        "test:apex:run:nimbus",
+        "nimbus:test:run:apex",
+        "test:nimbus:run:apex",
+        "test:run:nimbus:apex",
+        "test:run:apex:nimbus"
+      ],
+      "permutations": [
+        "nimbus:test",
+        "test:nimbus"
+      ]
+    },
+    "nimbus:validate": {
+      "aliases": [
+        "nimbus:apex:validate"
+      ],
+      "args": {},
+      "description": "Passes all arguments through to `nimbus validate`, including --sema and --json.",
+      "examples": [
+        "sf nimbus validate",
+        "sf nimbus validate AccountService --sema error",
+        "sf nimbus apex validate --json"
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:validate",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Detect Apex deployment errors locally with Nimbus.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "validate.js"
+      ],
+      "aliasPermutations": [
+        "nimbus:apex:validate",
+        "apex:nimbus:validate",
+        "apex:validate:nimbus",
+        "nimbus:validate:apex",
+        "validate:nimbus:apex",
+        "validate:apex:nimbus"
+      ],
+      "permutations": [
+        "nimbus:validate",
+        "validate:nimbus"
+      ]
+    },
+    "nimbus:version": {
+      "aliases": [],
+      "args": {},
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:version",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Display the active Nimbus runtime version.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "version.js"
+      ],
+      "aliasPermutations": [],
+      "permutations": [
+        "nimbus:version",
+        "version:nimbus"
+      ]
+    },
+    "nimbus:whoami": {
+      "aliases": [],
+      "args": {},
+      "examples": [
+        "sf nimbus whoami"
+      ],
+      "flags": {
+        "json": {
+          "description": "Format output as json.",
+          "helpGroup": "GLOBAL",
+          "name": "json",
+          "allowNo": false,
+          "type": "boolean"
+        },
+        "flags-dir": {
+          "helpGroup": "GLOBAL",
+          "name": "flags-dir",
+          "summary": "Import flag values from a directory.",
+          "hasDynamicHelp": false,
+          "multiple": false,
+          "type": "option"
+        }
+      },
+      "hasDynamicHelp": false,
+      "hiddenAliases": [],
+      "id": "nimbus:whoami",
+      "pluginAlias": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginName": "@nimbus-solution/nimbus-sf-plugin",
+      "pluginType": "core",
+      "strict": false,
+      "summary": "Show the active Nimbus account and license status.",
+      "enableJsonFlag": true,
+      "isESM": true,
+      "relativePath": [
+        "lib",
+        "commands",
+        "nimbus",
+        "whoami.js"
+      ],
+      "aliasPermutations": [],
+      "permutations": [
+        "nimbus:whoami",
+        "whoami:nimbus"
+      ]
+    }
+  },
+  "version": "1.0.0"
+}
