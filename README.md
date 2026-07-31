@@ -1,4 +1,4 @@
-# Nimbus — the Salesforce dev toolchain
+# Nimbus — the Salesforce dev toolchain, built on a local Apex runtime
 
 **Run, test, debug, and ship Salesforce Apex locally. No org. No Docker. No JVM.**
 
@@ -119,6 +119,86 @@ real-shape Salesforce DX project built to showcase Nimbus — and run
 `nimbus test` in it.
 
 Full guide: **[testnimbus.dev/quickstart](https://testnimbus.dev/quickstart)**
+
+## The toolchain
+
+Everything below ships in the same binary you just installed.
+
+### Real Apex runtime
+
+`nimbus test` · `nimbus exec` — classes, triggers, SOQL, and DML execute
+against an embedded PostgreSQL, with parallel execution and watch mode.
+**[Why an embedded database →](https://testnimbus.dev/why-postgres)**
+
+### Flow testing
+
+Record-triggered, autolaunched, and platform-event Flows (and their subflows)
+run alongside your Apex — same DML, same test.
+**[Flow testing →](https://testnimbus.dev/flows)**
+
+### Apex Language Server
+
+`nimbus lsp` — code lenses, inlay hints, semantic tokens, and call hierarchy in
+any LSP editor: VS Code, Cursor, Neovim, Zed, JetBrains, Helix, Emacs.
+**[Language Server →](https://testnimbus.dev/lsp)**
+
+### Live Apex debugger
+
+`nimbus dap` — breakpoints, stepping, and variable inspection over DAP. Live
+execution, not log replay. (Pro)
+**[Debugger →](https://testnimbus.dev/debugger)**
+
+### Apex dependency graph
+
+`nimbus graph` — classes, triggers, Flows, SObjects, custom metadata, and
+labels as one graph, including DML-to-trigger and DML-to-Flow edges no static
+analyzer sees. Interactive viewer in the Dev UI, VS Code, and JetBrains.
+**[Dependency graph →](https://testnimbus.dev/graph)**
+
+### Mutation testing for Apex
+
+`nimbus mutate` — flips operators, negates conditions, changes returns, and
+checks your tests notice. Coverage tells you code ran; this tells you it's
+tested. (Pro)
+**[Mutation testing →](https://testnimbus.dev/mutation)**
+
+### Execution traces & analytics
+
+Every test run produces a structured OpenTelemetry trace — method calls, SOQL,
+DML, triggers, branches — explorable as a tree, not a 40,000-line debug log. (Pro)
+**[Traces & analytics →](https://testnimbus.dev/analytics)**
+
+### Browser Dev UI
+
+`nimbus dev` — test explorer, coverage, schema browser, and an Apex REPL in
+your browser. No editor needed.
+**[Dev UI →](https://testnimbus.dev/dev-ui)**
+
+### Gated deploys & assured releases
+
+`nimbus deploy` — local gates, Salesforce validation of the same bytes, then
+deploy, in one command. `nimbus release` adds signed receipts, recorded quality
+gates, promote & rollback (Pro). `nimbus sf` passes any Salesforce CLI command
+through untouched.
+**[Deploy & release →](https://testnimbus.dev/deploy)**
+
+### MCP server for AI agents
+
+`nimbus mcp` — Claude Code, Cursor, and Copilot call the runtime natively for
+tight write-test-fix loops.
+**[Agentic development →](https://testnimbus.dev/agentic)**
+
+### Local Salesforce API
+
+`nimbus serve` — a Salesforce-compatible REST and Pub/Sub gRPC server on
+localhost, for testing integrations without an org. (Pro)
+**[Local API →](https://testnimbus.dev/serve)**
+
+### Background daemon
+
+`nimbus daemon` — warm the codebase once; every run after that starts in
+milliseconds. (Pro)
+**[Daemon →](https://testnimbus.dev/daemon)**
 
 ## What it supports
 
