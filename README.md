@@ -46,6 +46,10 @@ removes the org from that loop:
 - 🧰 **CI-native** — JUnit and Cobertura XML drop straight into GitHub Actions,
   GitLab CI, SonarQube, and Codecov.
 
+![The interactive Apex dependency graph in the Nimbus Dev UI — classes, triggers, and tests of the berlinbrew-demo project](docs/graph-viewer.png)
+
+<p align="center"><sub>The dependency graph of <a href="https://github.com/nimbus-solution/berlinbrew-demo">berlinbrew-demo</a> in the interactive viewer — highlighted, what a change to the selected class can reach.</sub></p>
+
 ## Install
 
 **macOS / Linux**
