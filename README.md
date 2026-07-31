@@ -110,6 +110,8 @@ nimbus graph AccountService
 nimbus deploy --target-org staging
 ```
 
+![nimbus test running a demo project's 153 Apex tests locally — all green in 945ms](docs/nimbus-test.gif)
+
 A ready-to-copy GitHub Actions workflow lives in
 [`examples/`](examples/) — see also the [CI/CD guide](https://testnimbus.dev/ci).
 
