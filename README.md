@@ -1,13 +1,18 @@
-# Nimbus — Local Apex Runtime & Test Runner
+# Nimbus — the Salesforce dev toolchain
 
-**Run, test, and debug Salesforce Apex locally. No org. No Docker. No JVM.**
+**Run, test, debug, and ship Salesforce Apex locally. No org. No Docker. No JVM.**
 
-Nimbus is a **local Apex runtime** for Salesforce. It executes Apex classes,
+At its core, Nimbus is a **local Apex runtime**: it executes Apex classes,
 triggers, Flows, SOQL, and DML on your machine — against a real embedded
 PostgreSQL database — so you can **run Apex tests locally without a Salesforce
 org**. A typical test finishes in milliseconds, which makes Apex fast enough for
 tight TDD loops, agent-driven development, and CI that doesn't depend on a
 scratch org pool.
+
+Around that runtime has grown the rest of the toolchain: a Language Server and
+live debugger, an interactive dependency graph of your whole codebase, mutation
+testing, execution traces, and a release surface that validates and deploys the
+same code it just proved — all from one binary.
 
 🌐 **[testnimbus.dev](https://testnimbus.dev)** &nbsp;·&nbsp;
 📖 **[Docs](https://testnimbus.dev/docs)** &nbsp;·&nbsp;
@@ -27,6 +32,14 @@ removes the org from that loop:
   PostgreSQL, DML persists, triggers fire, Flows execute.
 - 🔌 **No org, no credentials, no Docker, no JVM** — a single binary, point it at
   your existing SFDX project and run. Works offline.
+- 🕸️ **Your codebase as a graph** — `nimbus graph` maps classes, triggers,
+  Flows, SObjects, custom metadata, and labels into a dependency graph — in the
+  terminal, or the interactive viewer in the Dev UI, VS Code, and JetBrains.
+  It includes the edges no static analyzer sees: DML on an object reaching its
+  triggers and record-triggered Flows.
+- 🚢 **Ship what you proved** — `nimbus deploy` runs your local gates, validates
+  the same bytes against Salesforce, then deploys. `nimbus release` adds signed
+  receipts, recorded quality gates, promote & rollback.
 - 🤖 **Built for AI agents** — `nimbus mcp` exposes the test runner over MCP so
   Claude Code, Cursor, and Copilot can iterate in write-test-fix loops.
 - 🧪 **Mutation testing** for Apex — verify your tests actually catch bugs.
@@ -85,6 +98,12 @@ nimbus test "AccountServiceTest.*"
 
 # With coverage (Cobertura XML) + JUnit XML test results for CI
 nimbus test "*" --coverage-report coverage.xml --results-xml results.xml
+
+# What can a change to this class reach? The dependency graph, from the CLI
+nimbus graph AccountService
+
+# Local gates → Salesforce validation → deploy, in one command
+nimbus deploy --target-org staging
 ```
 
 A ready-to-copy GitHub Actions workflow lives in
@@ -109,9 +128,11 @@ Full guide: **[testnimbus.dev/quickstart](https://testnimbus.dev/quickstart)**
 | **Data** | SOQL (WHERE, ORDER BY, LIMIT, aggregates, relationships, bind vars), DML (insert/update/delete/upsert/undelete) |
 | **Automation** | Before/after triggers, record-triggered Flows, autolaunched Flows, subflows, platform-event Flows |
 | **Testing** | `@isTest`, `@testSetup`, `System.assert*`, `Test.startTest/stopTest`, Stub API / ApexMocks, per-test transaction isolation |
-| **Tooling** | Live debugger (DAP), standalone Language Server, browser Dev UI, watch mode, mutation testing, governor-limit enforcement |
-| **CI** | JUnit XML, Cobertura XML, JSON, HTML coverage |
-| **AI** | MCP server (`nimbus mcp`) for Claude Code, Cursor, Copilot |
+| **Insight** | Interactive dependency graph (classes, triggers, Flows, SObjects, custom metadata), `nimbus explain`, failure triage, run history, execution traces |
+| **Tooling** | Live debugger (DAP), standalone Language Server, browser Dev UI, watch mode, mutation testing, fixture generation, governor-limit enforcement |
+| **Ship** | Gated deploys (`nimbus deploy`), assured releases with signed receipts (`nimbus release`), `sf` pass-through (`nimbus sf`), pinned CLI toolchain for CI |
+| **CI** | JUnit XML, Cobertura XML, JSON, HTML coverage, release-in-CI templates |
+| **AI** | MCP server (`nimbus mcp`) for Claude Code, Cursor, Copilot; [agent skills for Apex](https://github.com/nimbus-solution/nimbus-skills) |
 
 Coverage expands every release — see the
 **[changelog](https://testnimbus.dev/changelog)**.
@@ -122,7 +143,8 @@ The Nimbus Language Server is standalone, so it works beyond VS Code: **VS Code,
 Cursor, Windsurf, Neovim, Zed, JetBrains, Emacs, Helix.** The
 [VS Code extension](https://testnimbus.dev/vscode) is published to both the
 Microsoft Marketplace and the
-[Open VSX registry](https://open-vsx.org/extension/NimbusSolutions/testnimbus).
+[Open VSX registry](https://open-vsx.org/extension/NimbusSolutions/testnimbus),
+and there's a dedicated [JetBrains plugin](https://testnimbus.dev/jetbrains).
 
 ## How it compares
 
@@ -132,10 +154,11 @@ Microsoft Marketplace and the
 
 ## Pricing
 
-Free for individual developers, forever. Pro and Team tiers add the daemon,
-parallel execution, watch mode, the debugger, mutation testing, and CI.
-**Free during the public beta** — see
-**[pricing](https://testnimbus.dev/#pricing)**.
+Free for individual developers, forever — including the runtime, unlimited test
+runs, coverage, and gated deploys. Pro and Team add the daemon, parallel
+execution, watch mode, the live debugger, mutation testing, the local
+Salesforce API, and assured releases. Pro is currently free for every
+developer, no card required — see **[pricing](https://testnimbus.dev/#pricing)**.
 
 ## Links
 
@@ -149,8 +172,9 @@ parallel execution, watch mode, the debugger, mutation testing, and CI.
 
 ---
 
-<sub>Nimbus is a local Apex test runner / Apex execution runtime for Salesforce
-developers who want to run Apex tests locally without an org. Keywords for the
-humans and the crawlers: local apex runtime, run apex tests locally, apex test
-runner, salesforce apex without org, apex interpreter, local salesforce
-development, apex CI without scratch org.</sub>
+<sub>Nimbus is a Salesforce dev toolchain and local Apex runtime for developers
+who want to run Apex tests locally without an org. Keywords for the humans and
+the crawlers: local apex runtime, run apex tests locally, apex test runner,
+salesforce apex without org, apex interpreter, apex dependency graph, salesforce
+deployment validation, local salesforce development, apex CI without scratch
+org.</sub>
