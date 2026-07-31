@@ -129,7 +129,8 @@ Everything below ships in the same binary you just installed.
 ### Real Apex runtime
 
 `nimbus test` · `nimbus exec` — classes, triggers, SOQL, and DML execute
-against an embedded PostgreSQL, with parallel execution and watch mode.
+against an embedded PostgreSQL, with parallel execution. `nimbus exec` is
+Execute Anonymous, locally.
 **[Why an embedded database →](https://testnimbus.dev/why-postgres)**
 
 ### Flow testing
@@ -138,17 +139,75 @@ Record-triggered, autolaunched, and platform-event Flows (and their subflows)
 run alongside your Apex — same DML, same test.
 **[Flow testing →](https://testnimbus.dev/flows)**
 
-### Apex Language Server
+### Code coverage
 
-`nimbus lsp` — code lenses, inlay hints, semantic tokens, and call hierarchy in
-any LSP editor: VS Code, Cursor, Neovim, Zed, JetBrains, Helix, Emacs.
-**[Language Server →](https://testnimbus.dev/lsp)**
+Line, method, and branch coverage on every run — console, HTML, JSON, and
+Cobertura output. `nimbus coverage diff` compares two runs for PR gates: the
+delta, per-file regressions, the exact lines that lost coverage.
+**[Coverage →](https://testnimbus.dev/coverage)**
+
+### Watch mode
+
+`nimbus test:watch` — save a class and the impacted tests re-run in
+milliseconds. Dependency-tracked, so only the tests that need to run do. (Pro)
+**[Watch mode →](https://testnimbus.dev/watch)**
+
+### Mutation testing for Apex
+
+`nimbus mutate` — flips operators, negates conditions, changes returns, and
+checks your tests notice. Coverage tells you code ran; this tells you it's
+tested. (Pro)
+**[Mutation testing →](https://testnimbus.dev/mutation)**
+
+### Test data factories
+
+`nimbus fixture` — generates a TestDataFactory from your actual schema: a
+`create` method per SObject, required fields populated, required lookups wired
+parents-first.
+**[Test data →](https://testnimbus.dev/fixture)**
+
+### HTTP callout mocking
+
+Declarative mock responses for callout tests and anonymous execution — URL
+pattern matching (Pro), no code changes to your classes.
+**[HTTP mocking →](https://testnimbus.dev/docs#http-mock-tests)**
+
+### Governor limits
+
+SOQL, DML, CPU, and heap limits enforced locally — and configurable, so limit
+bugs surface on your machine instead of in the org.
+**[Governor limits →](https://testnimbus.dev/governor-limits)**
+
+### Managed packages
+
+Run tests that touch managed-package classes: namespace handling, symbol
+resolution, stub scaffolding and auto-generation (Pro).
+**[Managed packages →](https://testnimbus.dev/managed-packages)**
+
+### Failure intelligence
+
+`nimbus explain` · `nimbus triage` · `nimbus history` — the full account of a
+failure (exception, source location, expected vs. actual, the SOQL and DML
+just before), failures grouped by cause, and every past run browsable in a TUI.
+**[Failure intelligence →](https://testnimbus.dev/explain)**
 
 ### Live Apex debugger
 
 `nimbus dap` — breakpoints, stepping, and variable inspection over DAP. Live
 execution, not log replay. (Pro)
 **[Debugger →](https://testnimbus.dev/debugger)**
+
+### Execution traces & analytics
+
+Every test run produces a structured OpenTelemetry trace — method calls, SOQL,
+DML, triggers, branches — explorable as a tree, not a 40,000-line debug log. (Pro)
+**[Traces & analytics →](https://testnimbus.dev/analytics)**
+
+### Benchmarking
+
+`nimbus bench` — run a test method N times and get mean, median, p95, p99, and
+governor-limit headroom. Treat Apex performance like any other language. (Pro)
+**[Bench →](https://testnimbus.dev/bench)**
 
 ### Apex dependency graph
 
@@ -161,38 +220,44 @@ analyzer sees. Interactive viewer in the Dev UI, VS Code, and JetBrains.
 
 <p align="center"><sub>The dependency graph of <a href="https://github.com/nimbus-solution/berlinbrew-demo">berlinbrew-demo</a> in the interactive viewer — highlighted, what a change to the selected class can reach.</sub></p>
 
-### Mutation testing for Apex
-
-`nimbus mutate` — flips operators, negates conditions, changes returns, and
-checks your tests notice. Coverage tells you code ran; this tells you it's
-tested. (Pro)
-**[Mutation testing →](https://testnimbus.dev/mutation)**
-
-### Execution traces & analytics
-
-Every test run produces a structured OpenTelemetry trace — method calls, SOQL,
-DML, triggers, branches — explorable as a tree, not a 40,000-line debug log. (Pro)
-**[Traces & analytics →](https://testnimbus.dev/analytics)**
-
 ### Browser Dev UI
 
 `nimbus dev` — test explorer, coverage, schema browser, and an Apex REPL in
-your browser. No editor needed.
+your browser. No editor needed. (`nimbus schema` opens the schema explorer
+directly.)
 **[Dev UI →](https://testnimbus.dev/dev-ui)**
+
+### Apex Language Server
+
+`nimbus lsp` — code lenses, inlay hints, semantic tokens, and call hierarchy in
+any LSP editor: VS Code, Cursor, Neovim, Zed, JetBrains, Helix, Emacs.
+**[Language Server →](https://testnimbus.dev/lsp)**
+
+### Local app hosting
+
+`nimbus app` — a local development server for Salesforce Multi-Framework UI
+bundles, running your app against the local runtime and database. A drop-in
+replacement for `sf ui-bundle dev` that works offline. (Pro)
+**[App hosting →](https://testnimbus.dev/app)**
 
 ### Gated deploys & assured releases
 
 `nimbus deploy` — local gates, Salesforce validation of the same bytes, then
 deploy, in one command. `nimbus release` adds signed receipts, recorded quality
-gates, promote & rollback (Pro). `nimbus sf` passes any Salesforce CLI command
-through untouched.
-**[Deploy & release →](https://testnimbus.dev/deploy)**
+gates, promote & rollback (Pro). The self-hosted **Assurance console** serves
+the whole audit trail — receipts, gate results, deployment history — to your
+team. `nimbus sf` passes any Salesforce CLI command through untouched.
+**[Deploy & release →](https://testnimbus.dev/deploy)** ·
+**[Assurance →](https://testnimbus.dev/assurance)**
 
 ### MCP server for AI agents
 
 `nimbus mcp` — Claude Code, Cursor, and Copilot call the runtime natively for
-tight write-test-fix loops.
-**[Agentic development →](https://testnimbus.dev/agentic)**
+tight write-test-fix loops, with curated agent skills via `nimbus skills`. It
+also tests Headless 360 tool surfaces — `@InvocableMethod`, `@AuraEnabled`,
+`@RestResource` — locally.
+**[Agentic development →](https://testnimbus.dev/agentic)** ·
+**[Headless 360 →](https://testnimbus.dev/headless360)**
 
 ### Local Salesforce API
 
@@ -205,6 +270,24 @@ localhost, for testing integrations without an org. (Pro)
 `nimbus daemon` — warm the codebase once; every run after that starts in
 milliseconds. (Pro)
 **[Daemon →](https://testnimbus.dev/daemon)**
+
+### Everything else in the binary
+
+| Command | What it does |
+|---|---|
+| `nimbus validate` | Syntax and apiVersion checks without running tests — catches what the deploy would reject |
+| `nimbus doctor` | Verify install, project layout, governor settings, runtime version |
+| `nimbus sync` | Incremental schema sync into the local database (`--rebuild` for full) |
+| `nimbus orgs` | List SF-CLI-authenticated orgs available for sync and fallback |
+| `nimbus stub` | Scaffold and inspect `stubs/`, loaded before your main source |
+| `nimbus new` | Scaffold a class, test class, or trigger with its `-meta.xml` |
+| `nimbus skills` | Install curated agent skills for Apex development |
+| `nimbus toolchain` | Pinned Salesforce CLI versions for reproducible CI |
+| `nimbus config` · `cache` · `db` · `reset` | Configuration and database housekeeping |
+| `nimbus login` · `status` | Pro license and install status |
+| `nimbus upgrade` | Self-update in place |
+
+Full reference for every command and flag: **[testnimbus.dev/docs](https://testnimbus.dev/docs)**
 
 ## What it supports
 
