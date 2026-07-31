@@ -2,6 +2,8 @@
 
 **Run, test, debug, and ship Salesforce Apex locally. No org. No Docker. No JVM.**
 
+![nimbus test running a demo project's 153 Apex tests locally — all green in 945ms](docs/nimbus-test.gif)
+
 At its core, Nimbus is a **local Apex runtime**: it executes Apex classes,
 triggers, Flows, SOQL, and DML on your machine — against a real embedded
 PostgreSQL database — so you can **run Apex tests locally without a Salesforce
@@ -45,10 +47,6 @@ removes the org from that loop:
 - 🧪 **Mutation testing** for Apex — verify your tests actually catch bugs.
 - 🧰 **CI-native** — JUnit and Cobertura XML drop straight into GitHub Actions,
   GitLab CI, SonarQube, and Codecov.
-
-![The interactive Apex dependency graph in the Nimbus Dev UI — classes, triggers, and tests of the berlinbrew-demo project](docs/graph-viewer.png)
-
-<p align="center"><sub>The dependency graph of <a href="https://github.com/nimbus-solution/berlinbrew-demo">berlinbrew-demo</a> in the interactive viewer — highlighted, what a change to the selected class can reach.</sub></p>
 
 ## Install
 
@@ -110,8 +108,6 @@ nimbus graph AccountService
 nimbus deploy --target-org staging
 ```
 
-![nimbus test running a demo project's 153 Apex tests locally — all green in 945ms](docs/nimbus-test.gif)
-
 A ready-to-copy GitHub Actions workflow lives in
 [`examples/`](examples/) — see also the [CI/CD guide](https://testnimbus.dev/ci).
 
@@ -160,6 +156,10 @@ execution, not log replay. (Pro)
 labels as one graph, including DML-to-trigger and DML-to-Flow edges no static
 analyzer sees. Interactive viewer in the Dev UI, VS Code, and JetBrains.
 **[Dependency graph →](https://testnimbus.dev/graph)**
+
+![The interactive Apex dependency graph in the Nimbus Dev UI — classes, triggers, and tests of the berlinbrew-demo project](docs/graph-viewer.png)
+
+<p align="center"><sub>The dependency graph of <a href="https://github.com/nimbus-solution/berlinbrew-demo">berlinbrew-demo</a> in the interactive viewer — highlighted, what a change to the selected class can reach.</sub></p>
 
 ### Mutation testing for Apex
 
