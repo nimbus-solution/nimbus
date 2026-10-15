@@ -1,5 +1,5 @@
-# Run Apex tests in GitHub Actions with Nimbus — no Salesforce org needed.
-# Docs: https://testnimbus.dev/ci
+# Run Apex tests in GitHub Actions with Renmy — no Salesforce org needed.
+# Docs: https://renmy.net/ci
 name: Apex Tests
 
 on:
@@ -13,15 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Nimbus
-        run: curl -fsSL https://install.testnimbus.dev | sh
+      - name: Install Renmy
+        run: curl -fsSL https://install.renmy.net | sh
         env:
           # Avoids the anonymous GitHub API rate limit on shared runners.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run tests
         run: |
-          nimbus test \
+          renmy test \
             --coverage --coverage-report coverage.xml \
             --results-xml results.xml
         env:
