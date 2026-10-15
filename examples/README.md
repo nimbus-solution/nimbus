@@ -1,7 +1,7 @@
 # Examples
 
 Copy-paste starting points for running Apex tests locally with
-[Nimbus](https://testnimbus.dev).
+[Renmy](https://renmy.net).
 
 | Example | What it shows |
 |---------|---------------|
@@ -9,16 +9,16 @@ Copy-paste starting points for running Apex tests locally with
 
 ## Want a full project to try?
 
-Clone **[berlinbrew-demo](https://github.com/nimbus-solution/berlinbrew-demo)** —
+Clone **[berlinbrew-demo](https://github.com/renmy-solutions/berlinbrew-demo)** —
 a real-shape Salesforce DX project (subscriptions, trigger handlers, callout
-mocks, bulk patterns) built to showcase Nimbus:
+mocks, bulk patterns) built to showcase Renmy:
 
 ```bash
-curl -fsSL https://install.testnimbus.dev | sh
-git clone https://github.com/nimbus-solution/berlinbrew-demo
+curl -fsSL https://install.renmy.net | sh
+git clone https://github.com/renmy-solutions/berlinbrew-demo
 cd berlinbrew-demo
-nimbus test
+renmy test
 ```
 
 For GitLab CI, SonarQube, and Codecov setups see the
-[CI/CD guide](https://testnimbus.dev/ci).
+[CI/CD guide](https://renmy.net/ci).
